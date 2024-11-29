@@ -3,11 +3,11 @@ package entidades;
 import java.util.Objects;
 
 public class Pessoa {
-    private Integer cpf;
+    private String cpf;
     private String nome;
     private Funcao funcao;
 
-     public Pessoa(Integer cpf, String nome, int funcao){
+     public Pessoa(String cpf, String nome, int funcao){
          this.cpf = cpf;
          this.nome = nome;
          if(funcao == 0){
@@ -18,11 +18,11 @@ public class Pessoa {
 
      }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

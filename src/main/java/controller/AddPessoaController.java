@@ -24,7 +24,7 @@ public class AddPessoaController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String nomeDaPessoa = JOptionPane.showInputDialog(janelaPrincipal, "Nome:","Cadastro de pessoas", JOptionPane.INFORMATION_MESSAGE);
-        Integer cpfPessoa = Integer.parseInt(JOptionPane.showInputDialog(janelaPrincipal, "CPF:", JOptionPane.INFORMATION_MESSAGE));
+        String cpfPessoa = JOptionPane.showInputDialog(janelaPrincipal, "CPF:", "Cadastrar pessoa", JOptionPane.INFORMATION_MESSAGE);
         int funcaoOpt = JOptionPane.showOptionDialog(janelaPrincipal,"1 - Pagante \n2 - Recebedor","Função da Pessoa", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, umDoisOpt,null);
 
         Pessoa novaPessoa = new Pessoa(cpfPessoa, nomeDaPessoa, funcaoOpt);

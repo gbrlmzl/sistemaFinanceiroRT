@@ -34,4 +34,10 @@ public class Gasto {
     public void setNomeDoResponsavel(String nomeDoResponsavel) {
         this.nomeDoResponsavel = nomeDoResponsavel;
     }
+    @Override
+    public String toString(){
+        return identificacao + "\n" +
+               valor + " R$";
+    }
+
 }

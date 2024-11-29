@@ -4,12 +4,11 @@ package sistema;
 import entidades.*;
 import exceptions.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SistemaFinanceiro {
     private DespesaDoMes[] despesaDoMes;
-    private HashMap<Integer, Pessoa> pessoas;
+    private HashMap<String, Pessoa> pessoas;
 
 
     public SistemaFinanceiro(){
@@ -23,21 +22,23 @@ public class SistemaFinanceiro {
 
     }
 
-    public Pessoa pesquisaPessoaCpf(Integer Cpf){ //tratar exceções depois
+    public Pessoa pesquisaPessoaCpf(String Cpf){ //tratar exceções depois
         return pessoas.get(Cpf);
     }
 
     public boolean cadastrarPessoa(Pessoa novaPessoa) throws PessoaJaCadastradaException {
         if(pessoas.containsValue(novaPessoa)) throw new PessoaJaCadastradaException("Já existe uma pessoa cadastrada com esse CPF!");
-        pessoas.put(novaPessoa.getCpf(), novaPessoa);
-        return true;
+        else{
+            pessoas.put(novaPessoa.getCpf(), novaPessoa);
+            return true;}
+
 
 
     }
 
     public String calcularPagamento(DespesaDoMes despesaMes, Pessoa pagante, Pessoa recebedor){
-        double gastosPagante = despesaMes.gastosDaPessoa(pagante);
-        double gastosRecebedor = despesaMes.gastosDaPessoa(recebedor);
+        double gastosPagante = despesaMes.totalGastosDaPessoa(pagante);
+        double gastosRecebedor = despesaMes.totalGastosDaPessoa(recebedor);
 
         double valor = (gastosRecebedor/2) - (gastosPagante/2);
 
@@ -58,6 +59,10 @@ public class SistemaFinanceiro {
             return "Sistema formatado com sucesso.";
         }
         return "Falha na formatação do sistema.";
+    }
+
+    public String getInfoGastos(int mes){
+        return despesaDoMes[mes].getInfoGastos();
     }
 
 }

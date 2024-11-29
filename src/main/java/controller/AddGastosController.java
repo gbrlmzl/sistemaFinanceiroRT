@@ -23,13 +23,14 @@ public class AddGastosController implements ActionListener {
     public void actionPerformed(ActionEvent e){
         boolean sair = false;
         int mes = JOptionPane.showOptionDialog(janelaPrincipal,"Selecione o mês:","Cadastro de gastos",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null, mesesOpt,null);
-        DespesaDoMes despesaDoMes = new DespesaDoMes((mes+1));
 
         //pessoas
-        Integer cpfPaga = Integer.parseInt(JOptionPane.showInputDialog(janelaPrincipal,"CPF do pagante(Apenas números):","Cadastro de gastos",JOptionPane.INFORMATION_MESSAGE));
-        Integer cpfRecebe = Integer.parseInt(JOptionPane.showInputDialog(janelaPrincipal,"CPF do recebedor(Apenas números):","Cadastro de gastos",JOptionPane.INFORMATION_MESSAGE));
+        String cpfPaga = JOptionPane.showInputDialog(janelaPrincipal,"CPF do pagante(Apenas números):","Cadastro de gastos",JOptionPane.INFORMATION_MESSAGE);
+        String cpfRecebe = JOptionPane.showInputDialog(janelaPrincipal,"CPF do recebedor(Apenas números):","Cadastro de gastos",JOptionPane.INFORMATION_MESSAGE);
         Pessoa pagante = sistema.pesquisaPessoaCpf(cpfPaga);
         Pessoa recebedor = sistema.pesquisaPessoaCpf(cpfRecebe);
+
+        DespesaDoMes despesaDoMes = new DespesaDoMes((mes+1), pagante.getNome(), recebedor.getNome());
         while(!sair){
             String identificacaoDoGasto = JOptionPane.showInputDialog(janelaPrincipal,"Identificação:","Cadastro de gastos do pagante",JOptionPane.INFORMATION_MESSAGE);
             double valorDoGasto = Double.parseDouble(JOptionPane.showInputDialog(janelaPrincipal,"Valor:","Cadastro de gastos do pagante",JOptionPane.INFORMATION_MESSAGE));
