@@ -13,7 +13,7 @@ public class AddPessoaController implements ActionListener {
     private SistemaFinanceiro sistema;
     private JFrame janelaPrincipal;
     //private final ImageIcon addIcon = new ImageIcon("./imgs/icons/addIcon.png");
-    private String[] umDoisOpt = new String[]{"1", "2"};
+    //private String[] umDoisOpt = new String[]{"Pagante", "Recebedor"};
 
 
     public AddPessoaController(SistemaFinanceiro sistema, JFrame janela){
@@ -25,9 +25,9 @@ public class AddPessoaController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String nomeDaPessoa = JOptionPane.showInputDialog(janelaPrincipal, "Nome:","Cadastro de pessoas", JOptionPane.INFORMATION_MESSAGE);
         String cpfPessoa = JOptionPane.showInputDialog(janelaPrincipal, "CPF:", "Cadastrar pessoa", JOptionPane.INFORMATION_MESSAGE);
-        int funcaoOpt = JOptionPane.showOptionDialog(janelaPrincipal,"1 - Pagante \n2 - Recebedor","Função da Pessoa", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, umDoisOpt,null);
+        //int funcaoOpt = JOptionPane.showOptionDialog(janelaPrincipal,"Função:","Cadastrar pessoa", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, umDoisOpt,null);
 
-        Pessoa novaPessoa = new Pessoa(cpfPessoa, nomeDaPessoa, funcaoOpt);
+        Pessoa novaPessoa = new Pessoa(cpfPessoa, nomeDaPessoa);
         try{
             if(sistema.cadastrarPessoa(novaPessoa)){
                 JOptionPane.showMessageDialog(janelaPrincipal,"Pessoa cadastrada com sucesso!","",JOptionPane.INFORMATION_MESSAGE);

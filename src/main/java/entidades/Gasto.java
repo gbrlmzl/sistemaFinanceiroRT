@@ -36,8 +36,7 @@ public class Gasto {
     }
     @Override
     public String toString(){
-        return identificacao + "\n" +
-               valor + " R$";
+        return identificacao + "  ->  " + valor + " R$";
     }
 
 }

@@ -5,17 +5,11 @@ import java.util.Objects;
 public class Pessoa {
     private String cpf;
     private String nome;
-    private Funcao funcao;
 
-     public Pessoa(String cpf, String nome, int funcao){
+
+     public Pessoa(String cpf, String nome){
          this.cpf = cpf;
          this.nome = nome;
-         if(funcao == 0){
-             this.funcao = Funcao.PAGA;
-         }else{
-             this.funcao = Funcao.RECEBE;
-         }
-
      }
 
     public String getCpf() {
@@ -34,13 +28,7 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Funcao getFuncao() {
-        return funcao;
-    }
 
-    public void setFuncao(Funcao funcao) {
-        this.funcao = funcao;
-    }
 
     @Override
     public boolean equals(Object o) {

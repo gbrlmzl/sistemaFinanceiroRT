@@ -1,5 +1,6 @@
 package controller;
 
+import exceptions.DadosNaoCadastradosException;
 import sistema.SistemaFinanceiro;
 
 import javax.swing.*;
@@ -19,7 +20,14 @@ public class ConsultarGastosController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         int mes = JOptionPane.showOptionDialog(janelaPrincipal,"Selecione o mês:","Consultar despesas",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null, mesesOpt,null);
-        JOptionPane.showMessageDialog(janelaPrincipal,sistema.getInfoGastos(mes), "Despesas do mês", JOptionPane.INFORMATION_MESSAGE);
+        try{
+            sistema.getInfoGastos(mes);
+            JOptionPane.showMessageDialog(janelaPrincipal, sistema.getInfoGastos(mes), "Despesas do mês", JOptionPane.INFORMATION_MESSAGE);
+
+        }catch(DadosNaoCadastradosException ex){
+            JOptionPane.showMessageDialog(janelaPrincipal, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }
 }

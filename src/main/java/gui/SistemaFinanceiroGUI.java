@@ -2,6 +2,7 @@ package gui;
 
 import controller.AddGastosController;
 import controller.AddPessoaController;
+import controller.BaixarListaController;
 import controller.ConsultarGastosController;
 import sistema.SistemaFinanceiro;
 
@@ -14,7 +15,7 @@ public class SistemaFinanceiroGUI extends JFrame {
     JMenuBar barraDeMenu = new JMenuBar();
     JLabel linha1, linha2;
     public SistemaFinanceiroGUI() {
-        setTitle("Teste");
+        setTitle("Controle de despesas");
         setSize(800, 600); //tamanho da janela
         setLocation(150, 150);
         setResizable(false);
@@ -30,28 +31,37 @@ public class SistemaFinanceiroGUI extends JFrame {
         JMenu menuDespesas = new JMenu("Despesas");
         JMenuItem menuCadastrarDespesas = new JMenuItem("Cadastrar despesas");
         JMenuItem menuConsultarDespesas = new JMenuItem("Consultar despesas");
+        JMenuItem menuListaDespesas = new JMenuItem("Baixar lista de despesas");
         menuDespesas.add(menuConsultarDespesas);
         menuDespesas.add(menuCadastrarDespesas);
+        menuDespesas.add(menuListaDespesas);
 
-        JMenu menuPessoas = new JMenu("Pessoas");
+        /*JMenu menuPessoas = new JMenu("Pessoas");
         JMenuItem menuCadastrarPessoas = new JMenuItem("Cadastrar pessoa");
         JMenuItem menuConsultarPessoas = new JMenuItem("Consultar pessoas");
         menuPessoas.add(menuCadastrarPessoas);
         menuPessoas.add(menuConsultarPessoas);
+        */
 
+        JMenu menuDados = new JMenu("Sistema");
+        JMenuItem menuImportarDados = new JMenuItem("Importar dados");
+        JMenuItem menuExportarDados = new JMenuItem("Exportar dados");
 
-        JMenu menuDados = new JMenu("Formatar");
-        JMenuItem menuFormatarGeral = new JMenuItem("Formatar sistema(NÃO PODE SER DESFEITO!)");
-        menuDados.add(menuFormatarGeral);
+        menuDados.add(menuImportarDados);
+        menuDados.add(menuExportarDados);
+
+        //JMenuItem menuFormatarGeral = new JMenuItem("Formatar sistema (NÃO PODE SER DESFEITO!)");
+        //menuDados.add(menuFormatarGeral);
 
         menuCadastrarDespesas.addActionListener(new AddGastosController(sistema, this));
-        menuCadastrarPessoas.addActionListener(new AddPessoaController(sistema, this));
+        //menuCadastrarPessoas.addActionListener(new AddPessoaController(sistema, this));
         menuConsultarDespesas.addActionListener(new ConsultarGastosController(sistema, this));
+        menuListaDespesas.addActionListener(new BaixarListaController(sistema, this));
 
 
 
         barraDeMenu.add(menuDespesas);
-        barraDeMenu.add(menuPessoas);
+        //barraDeMenu.add(menuPessoas);
         barraDeMenu.add(menuDados);
         setJMenuBar(barraDeMenu);
     }

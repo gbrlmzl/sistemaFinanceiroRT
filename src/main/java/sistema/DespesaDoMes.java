@@ -12,13 +12,17 @@ public class DespesaDoMes {
     private int mes;
 
 
-    public DespesaDoMes(int mes, String nomePagante, String nomeRecebedor){
+    public DespesaDoMes(int mes){
         listaDeGastos = new ArrayList<>();
         this.mes = mes;
+    }
+
+    public void setPaganteERecebedor(String nomePagante, String nomeRecebedor){
         this.nomePagante = nomePagante;
         this.nomeRecebedor = nomeRecebedor;
-
     }
+
+
     public int getMes() {
         return mes;
     }
@@ -39,10 +43,10 @@ public class DespesaDoMes {
         listaDeGastos.add(gasto);
     }
 
-    public double totalGastosDaPessoa(Pessoa pessoa){
+    public double totalGastosDaPessoa(String nomePessoa){
         double gastos = 0;
         for(Gasto g : listaDeGastos){
-            if(g.getNomeDoResponsavel().equals(pessoa.getNome())){
+            if(g.getNomeDoResponsavel().equals(nomePessoa)){
                 gastos += g.getValor();
             }
         }
@@ -52,6 +56,7 @@ public class DespesaDoMes {
         StringBuilder gastosPagante = new StringBuilder();
         StringBuilder gastosRecebedor = new StringBuilder();
         gastosPagante.append("Gastos de " + nomePagante + ":" + "\n");
+
         for(Gasto gas : listaDeGastos){
             if(gas.getNomeDoResponsavel().equals(nomePagante)){
                 gastosPagante.append(gas).append("\n");
@@ -59,7 +64,8 @@ public class DespesaDoMes {
                 gastosRecebedor.append(gas).append("\n");
             }
         }
-        gastosPagante.append("\nGastos de " + nomeRecebedor + ":" +  "\n").append(gastosRecebedor);
+        gastosPagante.append("TOTAL: ").append(totalGastosDaPessoa(nomePagante)).append(" R$\n").append("\nGastos de ").append(nomeRecebedor).append(":").append("\n").append(gastosRecebedor).append("TOTAL: " + totalGastosDaPessoa(nomeRecebedor) + " R$");
+
         return gastosPagante.toString();
     }
 
