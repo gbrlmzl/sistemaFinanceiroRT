@@ -28,7 +28,7 @@ public class BaixarListaController implements ActionListener {
                 fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int retorno = fileChooser.showDialog(janelaPrincipal, "Salvar");
                 if(retorno == JFileChooser.APPROVE_OPTION){
-                    String path = fileChooser.getSelectedFile().getAbsolutePath() + "\\Despesas_Mes_" + mes + ".txt";
+                    String path = fileChooser.getSelectedFile().getAbsolutePath() + "\\Despesas_Mes_" + (mes+1) + ".txt";
                     if(sistema.baixarListaDespesas(mes, path)){
                         JOptionPane.showMessageDialog(janelaPrincipal, "Lista salva com sucesso!", "Baixar lista de despesas",JOptionPane.PLAIN_MESSAGE);
                     }

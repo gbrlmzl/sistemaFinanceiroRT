@@ -1,9 +1,6 @@
 package gui;
 
-import controller.AddGastosController;
-import controller.AddPessoaController;
-import controller.BaixarListaController;
-import controller.ConsultarGastosController;
+import controller.*;
 import sistema.SistemaFinanceiro;
 
 import javax.swing.*;
@@ -28,6 +25,8 @@ public class SistemaFinanceiroGUI extends JFrame {
         add(linha1);
         add(linha2);
         add(new JLabel());
+
+        //JMenu
         JMenu menuDespesas = new JMenu("Despesas");
         JMenuItem menuCadastrarDespesas = new JMenuItem("Cadastrar despesas");
         JMenuItem menuConsultarDespesas = new JMenuItem("Consultar despesas");
@@ -35,6 +34,9 @@ public class SistemaFinanceiroGUI extends JFrame {
         menuDespesas.add(menuConsultarDespesas);
         menuDespesas.add(menuCadastrarDespesas);
         menuDespesas.add(menuListaDespesas);
+
+
+
 
         /*JMenu menuPessoas = new JMenu("Pessoas");
         JMenuItem menuCadastrarPessoas = new JMenuItem("Cadastrar pessoa");
@@ -50,23 +52,33 @@ public class SistemaFinanceiroGUI extends JFrame {
         menuDados.add(menuImportarDados);
         menuDados.add(menuExportarDados);
 
-        //JMenuItem menuFormatarGeral = new JMenuItem("Formatar sistema (NÃO PODE SER DESFEITO!)");
-        //menuDados.add(menuFormatarGeral);
+        JMenu menuFormatacao = new JMenu("Formatação");
+        JMenuItem menuFormatar = new JMenuItem("Formatar sistema (NÃO PODE SER DESFEITO)");
+        menuFormatacao.add(menuFormatar);
+
+
+
+
+        //Action Listener
 
         menuCadastrarDespesas.addActionListener(new AddGastosController(sistema, this));
         //menuCadastrarPessoas.addActionListener(new AddPessoaController(sistema, this));
         menuConsultarDespesas.addActionListener(new ConsultarGastosController(sistema, this));
         menuListaDespesas.addActionListener(new BaixarListaController(sistema, this));
+        menuExportarDados.addActionListener(new ExportarDadosController(sistema, this));
+        menuImportarDados.addActionListener(new ImportarDadosController(sistema, this));
+        menuFormatar.addActionListener(new FormatarDadosController(sistema, this));
 
 
 
         barraDeMenu.add(menuDespesas);
         //barraDeMenu.add(menuPessoas);
         barraDeMenu.add(menuDados);
+        barraDeMenu.add(menuFormatacao);
         setJMenuBar(barraDeMenu);
     }
 
-    //...
+
     public static void main(String[] args) {
         JFrame janela = new SistemaFinanceiroGUI();
         janela.setVisible(true);

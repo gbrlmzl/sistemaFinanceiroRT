@@ -1,6 +1,8 @@
 package entidades;
 
-public class Gasto {
+import java.io.Serializable;
+
+public class Gasto implements Serializable {
     private String identificacao;
     private double valor;
     private String nomeDoResponsavel;

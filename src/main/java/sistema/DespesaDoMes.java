@@ -3,9 +3,10 @@ package sistema;
 import entidades.Gasto;
 import entidades.Pessoa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DespesaDoMes {
+public class DespesaDoMes implements Serializable {
     private ArrayList<Gasto> listaDeGastos;
     private String nomePagante;
     private String nomeRecebedor;

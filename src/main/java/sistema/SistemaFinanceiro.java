@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class SistemaFinanceiro implements Serializable {
     private DespesaDoMes[] despesaDoMes;
     private Pessoa[] pessoas;
-    private Gravador gravador;
+
 
 
 
@@ -22,7 +22,18 @@ public class SistemaFinanceiro implements Serializable {
         pessoas = new Pessoa[2];
         pessoas[0] = new Pessoa("11965734413", "Gabriel Mizael");
         pessoas[1] = new Pessoa("", "Victor Hugo");
-        gravador = new Gravador();
+
+    }
+    public void importar(DespesaDoMes[] despesaDoMes, Pessoa[] pessoas){
+        this.despesaDoMes = despesaDoMes;
+        this.pessoas = pessoas;
+    }
+
+    public DespesaDoMes[] getDespesaDoMes(){
+        return this.despesaDoMes;
+    }
+    public Pessoa[] getPessoas(){
+        return this.pessoas;
     }
 
 
@@ -119,7 +130,7 @@ public class SistemaFinanceiro implements Serializable {
         return true;
     }
 
-    public
+    //public
 
 
 
