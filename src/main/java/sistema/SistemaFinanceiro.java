@@ -20,9 +20,22 @@ public class SistemaFinanceiro implements Serializable {
     public SistemaFinanceiro(){
         despesaDoMes = new DespesaDoMes[12];
         pessoas = new Pessoa[2];
-        pessoas[0] = new Pessoa("11965734413", "Gabriel Mizael");
-        pessoas[1] = new Pessoa("", "Victor Hugo");
+        pessoas[0] = new Pessoa("83996263635", "Gabriel Mizael");
+        pessoas[1] = new Pessoa("83986129804", "Victor Hugo");
 
+    }
+
+    public SistemaFinanceiro(boolean recuperar){
+        this();
+        if(recuperar){
+            try{
+                Gravador.autoRecupera(this);
+            }catch(IOException | ClassNotFoundException e){
+                System.out.println("Erro ao recuperar dados");
+            }
+
+
+        }
     }
     public void importar(DespesaDoMes[] despesaDoMes, Pessoa[] pessoas){
         this.despesaDoMes = despesaDoMes;
@@ -91,7 +104,6 @@ public class SistemaFinanceiro implements Serializable {
     public String formatarSistema(boolean confirmacao){
         if(confirmacao){
             despesaDoMes = new DespesaDoMes[12];
-            pessoas = new Pessoa[2];
             return "Sistema formatado com sucesso.";
         }
         return "Falha na formatação do sistema.";
@@ -110,11 +122,9 @@ public class SistemaFinanceiro implements Serializable {
     }
 
     public boolean despesasJaCadastradas(int mes){
-        if(despesaDoMes[mes] != null){
-            return true;
-        }
-        return false;
+        return despesaDoMes[mes] != null;
     }
+
     public boolean baixarListaDespesas(int mes, String path) throws IOException {
         File filePath = new File(path);
         String infoDespesas = despesaDoMes[mes].getInfoGastos();

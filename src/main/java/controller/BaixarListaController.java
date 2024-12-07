@@ -22,6 +22,10 @@ public class BaixarListaController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         int mes = JOptionPane.showOptionDialog(janelaPrincipal,"Selecione o mês:","Baixar lista de despesas",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null, mesesOpt,null);
+        if(mes < 0){
+            //JOptionPane.showMessageDialog(janelaPrincipal, "Operação cancelada pelo usuário.", "Baixar lista de despesas", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         if(sistema.despesasJaCadastradas(mes)){
             try{
                 JFileChooser fileChooser = new JFileChooser();
