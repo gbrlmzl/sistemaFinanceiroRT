@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FormatarDadosController implements ActionListener {
-    private String palavraDeConfirmacao = "Quero formatar o sistema";
+    private final String palavraDeConfirmacao = "Quero formatar o sistema";
     private SistemaFinanceiro sistema;
     private JFrame janelaPrincipal;
     public FormatarDadosController(SistemaFinanceiro sistema, JFrame janelaPrincipal){

@@ -4,21 +4,21 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Pessoa implements Serializable {
-    private String cpf;
+    private String numeroTelefone;
     private String nome;
 
 
-     public Pessoa(String cpf, String nome){
-         this.cpf = cpf;
+     public Pessoa(String numeroTelefone, String nome){
+         this.numeroTelefone = numeroTelefone;
          this.nome = nome;
      }
 
-    public String getCpf() {
-        return cpf;
+    public String getNumeroTelefone() {
+        return numeroTelefone;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setNumeroTelefone(String numeroTelefone) {
+        this.numeroTelefone = numeroTelefone;
     }
 
     public String getNome() {
@@ -36,11 +36,11 @@ public class Pessoa implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(getCpf(), pessoa.getCpf());
+        return Objects.equals(getNumeroTelefone(), pessoa.getNumeroTelefone());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCpf());
+        return Objects.hash(getNumeroTelefone());
     }
 }

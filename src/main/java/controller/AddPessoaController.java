@@ -12,9 +12,6 @@ import java.awt.event.ActionListener;
 public class AddPessoaController implements ActionListener {
     private SistemaFinanceiro sistema;
     private JFrame janelaPrincipal;
-    //private final ImageIcon addIcon = new ImageIcon("./imgs/icons/addIcon.png");
-    //private String[] umDoisOpt = new String[]{"Pagante", "Recebedor"};
-
 
     public AddPessoaController(SistemaFinanceiro sistema, JFrame janela){
         this.sistema = sistema;
@@ -25,7 +22,6 @@ public class AddPessoaController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String nomeDaPessoa = JOptionPane.showInputDialog(janelaPrincipal, "Nome:","Cadastro de pessoas", JOptionPane.INFORMATION_MESSAGE);
         String cpfPessoa = JOptionPane.showInputDialog(janelaPrincipal, "CPF:", "Cadastrar pessoa", JOptionPane.INFORMATION_MESSAGE);
-        //int funcaoOpt = JOptionPane.showOptionDialog(janelaPrincipal,"Função:","Cadastrar pessoa", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, umDoisOpt,null);
 
         Pessoa novaPessoa = new Pessoa(cpfPessoa, nomeDaPessoa);
         try{
@@ -35,13 +31,6 @@ public class AddPessoaController implements ActionListener {
         catch (PessoaJaCadastradaException exception){
             JOptionPane.showMessageDialog(janelaPrincipal,exception.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
         }
-
-
-
-
-
-
-
 
 
     }

@@ -14,7 +14,6 @@ public class AddGastosController implements ActionListener {
     private SistemaFinanceiro sistema;
     private JFrame janelaPrincipal;
     private final String[] mesesOpt = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12"};
-    private final String[] umDoisOpt = new String[]{"1", "2"};
     private final String[] despesasOpt = new String[]{"Adicionar outra despesa", "Finalizar"};
     private final String[] simNaoOpt = new String[]{"Sim", "Não"};
     private final String[] mesesExtenso = new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
@@ -43,7 +42,6 @@ public class AddGastosController implements ActionListener {
         boolean sair = false;
         int mes = JOptionPane.showOptionDialog(janelaPrincipal,"Selecione o mês:","Cadastro de gastos",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null, mesesOpt,null);
         if(mes < 0){
-            //JOptionPane.showMessageDialog(janelaPrincipal, "Operação cancelada pelo usuário.", "Cadastro de despesas", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         if(sistema.despesasJaCadastradas(mes)){
@@ -55,11 +53,6 @@ public class AddGastosController implements ActionListener {
 
 
         }
-
-        //pessoas
-        //int recebedorId = JOptionPane.showOptionDialog(janelaPrincipal,"Selecione o recebedor:","Cadastro de gastos",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, sistema.opcoesNome(), null);
-        //String cpfRecebe = JOptionPane.showInputDialog(janelaPrincipal,"CPF do recebedor(Apenas números):","Cadastro de gastos",JOptionPane.INFORMATION_MESSAGE);
-
 
         Pessoa pessoaUm = sistema.pesquisaPessoaId(0);
         Pessoa pessoaDois = sistema.pesquisaPessoaId(1);

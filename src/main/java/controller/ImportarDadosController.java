@@ -27,17 +27,13 @@ public class ImportarDadosController implements ActionListener {
                 if(Gravador.importarDados(path, sistema)){
                     JOptionPane.showMessageDialog(janelaPrincipal, "Dados importados com sucesso!", "Importar dados",JOptionPane.PLAIN_MESSAGE);
                 }
-
-
-
-
             }
 
         }catch(IOException exc){
-            JOptionPane.showMessageDialog(janelaPrincipal, "Caminho inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(janelaPrincipal, "Arquivo inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
 
         }catch(ClassNotFoundException exc){
-            JOptionPane.showMessageDialog(janelaPrincipal, "Arquivo inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(janelaPrincipal, "Arquivo inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
 
         }
 

@@ -1,20 +1,14 @@
 package sistema;
 
-
 import data.Gravador;
 import entidades.*;
 import exceptions.*;
-
 import java.io.*;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class SistemaFinanceiro implements Serializable {
     private DespesaDoMes[] despesaDoMes;
     private Pessoa[] pessoas;
-
-
-
 
 
     public SistemaFinanceiro(){
@@ -69,16 +63,13 @@ public class SistemaFinanceiro implements Serializable {
             return true;
         }
         return false;
-
-
-
     }
     private boolean cadastroValido(Pessoa novaPessoa){
         for(Pessoa p: pessoas){
             if(p == null){
                 continue;
             }
-            if(p.getCpf().equals(novaPessoa.getCpf())){
+            if(p.getNumeroTelefone().equals(novaPessoa.getNumeroTelefone())){
                 return false;
             }
         }
@@ -96,17 +87,15 @@ public class SistemaFinanceiro implements Serializable {
                        "------------------------------------------------------------------------------------------\n"+
                        "Valor do pagamento a " + despesaMes.getNomeRecebedor() +": " + String.format("%.2f",valor);
 
-
-
     }
 
 
-    public String formatarSistema(boolean confirmacao){
+    public boolean formatarSistema(boolean confirmacao){
         if(confirmacao){
             despesaDoMes = new DespesaDoMes[12];
-            return "Sistema formatado com sucesso.";
+            return true;
         }
-        return "Falha na formatação do sistema.";
+        return false;
     }
 
     public String getInfoGastos(int mes) throws DadosNaoCadastradosException {
@@ -114,7 +103,14 @@ public class SistemaFinanceiro implements Serializable {
             return despesaDoMes[mes].getInfoGastos();
         }
         throw new DadosNaoCadastradosException("Não há despesas cadastradas nesse mês!");
-        //lançar exceção
+    }
+
+    public String getInfoGastosPagante(int mes){
+        return despesaDoMes[mes].getInfoGastosPessoa(despesaDoMes[mes].getNomePagante());
+    }
+
+    public String getInfoGastosRecebedor(int mes){
+        return despesaDoMes[mes].getInfoGastosPessoa(despesaDoMes[mes].getNomeRecebedor());
     }
 
     public String[] opcoesNome(){
@@ -126,24 +122,15 @@ public class SistemaFinanceiro implements Serializable {
     }
 
     public boolean baixarListaDespesas(int mes, String path) throws IOException {
-        File filePath = new File(path);
         String infoDespesas = despesaDoMes[mes].getInfoGastos();
         Scanner sc = new Scanner(infoDespesas);
         BufferedWriter bw = new BufferedWriter(new FileWriter(path));
         while(sc.hasNextLine()){
             bw.write(sc.nextLine());
             bw.newLine();
-
         }
         bw.close();
         sc.close();
         return true;
     }
-
-    //public
-
-
-
-
-
 }

@@ -12,10 +12,8 @@ public class Gravador {
     private static File diretorioArquivo = new File(programDataPath, "Calculadora de Despesas");
     private static File arquivoPath = new File(diretorioArquivo.getAbsolutePath() + "\\dados_contabilidade.data");
 
-    /*public Gravador() {
-    }*/
 
-    public static void autoSalva(SistemaFinanceiro sistema) throws IOException, ClassNotFoundException {
+    public static void autoSalva(SistemaFinanceiro sistema) throws IOException{
         if (!(diretorioArquivo.exists())) {
             diretorioArquivo.mkdir();
         }

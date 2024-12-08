@@ -23,7 +23,6 @@ public class BaixarListaController implements ActionListener {
     public void actionPerformed(ActionEvent e){
         int mes = JOptionPane.showOptionDialog(janelaPrincipal,"Selecione o mês:","Baixar lista de despesas",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null, mesesOpt,null);
         if(mes < 0){
-            //JOptionPane.showMessageDialog(janelaPrincipal, "Operação cancelada pelo usuário.", "Baixar lista de despesas", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         if(sistema.despesasJaCadastradas(mes)){
@@ -36,23 +35,18 @@ public class BaixarListaController implements ActionListener {
                     if(sistema.baixarListaDespesas(mes, path)){
                         JOptionPane.showMessageDialog(janelaPrincipal, "Lista salva com sucesso!", "Baixar lista de despesas",JOptionPane.PLAIN_MESSAGE);
                     }
-
-
                 }
 
             }catch(IOException exc){
                 JOptionPane.showMessageDialog(janelaPrincipal, "Erro ao salvar lista.", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            }
+                }
             }
         else{
             JOptionPane.showMessageDialog(janelaPrincipal, "Não há despesas cadastradas nesse mês!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
             }
-
-
-
 
     }
 

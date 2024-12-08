@@ -70,10 +70,17 @@ public class DespesaDoMes implements Serializable {
         return gastosPagante.toString();
     }
 
+    public String getInfoGastosPessoa(String nomePessoa){
+        StringBuilder gastosPessoa = new StringBuilder();
 
-    public ArrayList<Gasto> getListaDeGastos(){
-        return listaDeGastos;
+        gastosPessoa.append("Gastos de " + nomePessoa + ":" + "\n");
+        for(Gasto gas : listaDeGastos){
+            if(gas.getNomeDoResponsavel().equals(nomePessoa)){
+                gastosPessoa.append(gas).append("\n");
+            }
+        }
+        gastosPessoa.append("\nTOTAL: ").append(totalGastosDaPessoa(nomePessoa)).append(" R$");
+        return gastosPessoa.toString();
     }
-
 
 }
